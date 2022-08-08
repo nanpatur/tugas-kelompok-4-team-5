@@ -42,33 +42,40 @@ const Home = () => {
         </div>
       </nav>
       <div className='m-5'>
-
-        <table className='table table-bordered' style={{ width: '100%'}}>
-          <thead>
-            <tr>
-              <th>NIM</th>
-              <th>Nama</th>
-              <th>Alamat</th>
-              <th>Jenis Kelamin</th>
-              <th>Hobi</th>
-              <th>Lokasi</th>
-              <th>Komentar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {studentList.map((student) => (
+        {isLoading ? (
+          <div class="text-center text-primary">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        ) : (
+          <table className='table table-bordered' style={{ width: '100%'}}>
+            <thead>
               <tr>
-                <td>{student.nim}</td>
-                <td>{student.name}</td>
-                <td>{student.address}</td>
-                <td>{student.gender === 'male' ? 'Laki-Laki' : 'Perempuan'}</td>
-                <td>{student.hoby}</td>
-                <td>{student.location}</td>
-                <td>{student.comments}</td>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Jenis Kelamin</th>
+                <th>Hobi</th>
+                <th>Lokasi</th>
+                <th>Komentar</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {studentList.map((student) => (
+                <tr>
+                  <td>{student?.nim || '-'}</td>
+                  <td>{student?.name || '-'}</td>
+                  <td>{student?.address || '-'}</td>
+                  <td>{student?.gender || '-' === 'male' ? 'Laki-Laki' : 'Perempuan'}</td>
+                  <td>{student?.hoby || '-'}</td>
+                  <td>{student?.location || '-'}</td>
+                  <td>{student?.comments || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   )
