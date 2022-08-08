@@ -1,28 +1,32 @@
 {
-  "products": [
+  "students": [
     {
       "id": 1,
-      "name": "Keyboard",
-      "description": "Keychron K2 ver 2 Hot-Swappable RGB Backlight Aluminum Dark Keycap RGB artinya lampu bisa warna warni ada 15 kombinasi Aluminum Frame itu lis pinggirannya, lebih berbobot dan kokoh",
-      "price": "250000",
-      "unit_cost": "190000",
-      "picture_url": "https://images.tokopedia.net/img/cache/900/hDjmkQ/2021/8/16/c819d760-036c-40d0-bc5b-a8888e31d15d.jpg"
+      "nim": 1234,
+      "name": "Nandi",
+      "address": "Bandung",
+      "gender": "male",
+      "hoby": "Mendaki gunung",
+      "comments": "",
+      "location": ""
     },
     {
-      "id": 2,
-      "name": "Mouse",
-      "description": "Mouse kerja ideal harus mempunyai fitur dan teknologi mutakhir dalam balutan desain yang elegan dan matang. Mouse Rexus Q20 hadir dengan fitur yang mengakomodasi pekerjaan Anda. Dengan berbasis koneksi nirkabel, mouse ini praktis, dengan mobilitas yang tinggi, dan tentu mempunyai desain yang elegan. Driver dengan pengaturan sensitvitas dalam mouse ini memungkinkan Anda mengatur pergerakan kursor sesuai kebutuhan pekerjaan Anda. Rexus Q20, teman ideal Anda di kantor!",
-      "price": 90000,
-      "unit_cost": 80000,
-      "picture_url": "https://images.tokopedia.net/img/cache/900/product-1/2020/9/3/42873580/42873580_0dae5a3d-b8ce-4b6b-918d-b5740e840f80_700_700"
+      "nim": "12983",
+      "name": "Nama",
+      "address": "Tangerang",
+      "gender": "male",
+      "hoby": "makan ",
+      "comments": "komentar",
+      "id": 3
     },
     {
-      "id": 3,
-      "name": "tes",
-      "description": "tes",
-      "unit_cost": "20000",
-      "price": "40000",
-      "picture_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/5/31/c6ba0fd6-cca3-49b2-a5d0-66702fb15646.png"
+      "nim": "1231233",
+      "name": "eqwerw",
+      "address": "qwert3",
+      "gender": "female",
+      "hoby": "qwertyr",
+      "comments": "qwertyrr",
+      "id": 4
     }
   ]
 }

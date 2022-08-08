@@ -2,8 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Product from "./pages/Product";
-import ProductForm from "./pages/ProductForm";
+import StudentForm from "./pages/StudentForm";
 
 function App() {
   return (
@@ -12,11 +11,8 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/produk">
-          <Product />
-        </Route>
-        <Route exact path="/produk/form">
-          <ProductForm />
+        <Route exact path="/student-form">
+          <StudentForm />
         </Route>
       </Switch>
     </Router>

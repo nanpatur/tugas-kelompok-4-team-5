@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import axiosInstance from "../axios";
 
 const user = {
   email: "user@mail.com",
@@ -7,73 +8,67 @@ const user = {
 };
 
 const Home = () => {
-  const [errorMessage, setErrorMessage] = useState("");
+  const [studentList, setStudentList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const payload = {
-      email: e.target.email.value,
-      password: e.target.password.value,
-    };
-    if (payload.email === user.email && payload.password === user.password) {
-      localStorage.setItem("_isLoggedIn", true);
-      history.push('/produk');
-    } else {
-      setErrorMessage("Email atau password salah");
-    }
-  };
-
+  
   useEffect(() => {
-    if (localStorage.getItem("_isLoggedIn")) {
-      history.push('/produk')
+    const getStudents = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axiosInstance().get("/students");
+        setStudentList(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.error(error);
+      }
     }
+    getStudents()
   }, [])
 
   return (
     <div
-      className="App container-fluid p-0 bg-dark d-flex justify-content-center align-items-center"
+      className="App container-fluid"
       style={{ minHeight: "100vh" }}
     >
-      <div className="card" style={{ width: '500px' }}>
-        <div className="card-body p-5">
-          <h3 className="mb-3">Login</h3>
-          <form onSubmit={onSubmit}>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                aria-describedby="emailHelp"
-                placeholder="Masukan email"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="Masukan password"
-              />
-            </div>
-            <div className="d-grid mb-3">
-              <button className="btn btn-primary" type="submit">
-                LOGIN
-              </button>
-            </div>
-            {errorMessage && (
-              <div className="alert alert-danger" role="alert">
-                {errorMessage}
-              </div>
-            )}
-          </form>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <button class="btn btn-primary" type="submit" onClick={() => history.push('/student-form')}>Tambah data +</button>
         </div>
+      </nav>
+      <div className='m-5'>
+
+        <table className='table table-bordered' style={{ width: '100%'}}>
+          <thead>
+            <tr>
+              <th>NIM</th>
+              <th>Nama</th>
+              <th>Alamat</th>
+              <th>Jenis Kelamin</th>
+              <th>Hobi</th>
+              <th>Lokasi</th>
+              <th>Komentar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {studentList.map((student) => (
+              <tr>
+                <td>{student.nim}</td>
+                <td>{student.name}</td>
+                <td>{student.address}</td>
+                <td>{student.gender === 'male' ? 'Laki-Laki' : 'Perempuan'}</td>
+                <td>{student.hoby}</td>
+                <td>{student.location}</td>
+                <td>{student.comments}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )
